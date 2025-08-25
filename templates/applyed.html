@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Jobs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f9f3e7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 10px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #d98324;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .job-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .job-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: 0.3s ease-in-out;
+            border-left: 5px solid #ff9800;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .job-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        .job-card strong {
+            font-size: 18px;
+            color: #d98324;
+        }
+        .job-card p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        a:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Applied Jobs</h2>
+        <div class="job-list">
+            {% if jobs %}
+                {% for job in jobs %}
+                    <div class="job-card">
+                        <strong>{{ job.company_name }}</strong> | {{ job.job_role }}<br>
+                        <p><b>Job Description:</b> {{ job.description }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No jobs found.</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'jobpage' %}">Back to Job Search</a>
+    </div>
+</body>
+</html>
