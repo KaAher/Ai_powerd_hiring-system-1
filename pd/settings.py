@@ -87,14 +87,18 @@ WSGI_APPLICATION = 'pd.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 import os
-import dj_database_url
+
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        "postgresql://jobportal_mk4q_user:AbRIwQiZUopyaS0KWSg8baDKCcFVFjGC@dpg-cuvv51ij1k6c738aet60-a.oregon-postgres.render.com/jobportal_mk4q?sslmode=require"
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jobportal',      # database name in pgAdmin
+        'USER': 'postgres',       # your PostgreSQL username (often 'postgres' locally)
+        'PASSWORD': 'Kaveri@1605',  # the password you set for the local PostgreSQL user
+        'HOST': 'localhost',      # local server
+        'PORT': '5432',           # default PostgreSQL port
+    }
 }
-
 
 
 
